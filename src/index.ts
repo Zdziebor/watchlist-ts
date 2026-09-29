@@ -254,3 +254,68 @@ console.log(findById(movies, 1));
 printAll(movies);
 
 console.log(addNote(movies, 999, "Test notatka"));
+
+const movieIndex = movies.findIndex(elements => elements.id === 3)
+
+console.log(movieIndex);
+
+function removeMovie(movie: Movie[], id: number): boolean {
+    const movieIndex = movie.findIndex(elements => elements.id === id)
+
+    if (movieIndex === -1) {
+        return false;
+    } else {
+        const removed = movie.splice(movieIndex, 1)
+        console.log(`Usunięto: ${removed[0].title}`);
+    } return true;
+
+
+
+}
+
+console.log(removeMovie(movies, 3));
+
+printAll(movies);
+
+console.log(removeMovie(movies, 3));
+
+function sortByYear(movie: Movie[]): Movie[] {
+
+    const moviesCopy = [...movie];
+    moviesCopy.sort((a, b) => a.year - b.year);
+
+    return moviesCopy;
+
+}
+
+const moviesSortedByYear = sortByYear(movies)
+
+printAll(moviesSortedByYear);
+
+printAll(movies);
+
+function sortByTitle(movie: Movie[]): Movie[] {
+    const moviesCopy = [...movie];
+    moviesCopy.sort((a, b) => a.title.localeCompare(b.title, "pl"));
+    return moviesCopy;
+}
+
+const moviesSortedByTitle = sortByTitle(movies);
+printAll(moviesSortedByTitle);
+
+printAll(movies);
+
+function sortByRating(movies: Movie[]): Movie[] {
+
+    const moviesCopy = [...movies];
+
+    const sortedRating = moviesCopy.sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
+
+    return sortedRating;
+
+}
+
+const sortedByRating = sortByRating([movie1, movie2, movie3, movie4]);
+
+printAll(sortedByRating);
+
