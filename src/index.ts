@@ -185,3 +185,72 @@ const unwatchedMovies = unwatched(movies);
 
 console.log("Movies unwatched!");
 printAll(unwatchedMovies);
+
+
+function markAsWatched(movie: Movie[], id: number): boolean {
+
+    const returnedValue = findById(movie, id);
+
+    if (returnedValue === undefined) {
+        return false;
+    }
+
+    returnedValue.status = "obejrzany";
+    return true;
+
+
+}
+
+console.log(markAsWatched(movies, 999));
+
+printAll(movies);
+
+function rateMovie(movie: Movie[], id: number, rating: number): boolean {
+
+    if (!(rating <= 10 && rating >= 1 && Number.isInteger(rating))) {
+        return false;
+    }
+
+
+    const searchResult = findById(movie, id);
+
+    if (searchResult === undefined) {
+        return false;
+    } else {
+        searchResult.status = "obejrzany";
+        searchResult.rating = rating;
+    } return true;
+
+}
+
+printAll(movies);
+
+console.log(rateMovie(movies, 4, 15));
+console.log(rateMovie(movies, 4, 7.5));
+console.log(rateMovie(movies, 999, 8));
+console.log(rateMovie(movies, 4, 8));
+
+
+printAll(movies);
+
+
+function addNote(movies: Movie[], id: number, note: string): boolean {
+
+    const movieFound = findById(movies, id);
+
+    if (movieFound === undefined) {
+        return false;
+    }
+
+    movieFound.note = note;
+    return true;
+
+}
+
+addNote(movies, 1, "Test notatka");
+
+console.log(findById(movies, 1));
+
+printAll(movies);
+
+console.log(addNote(movies, 999, "Test notatka"));
