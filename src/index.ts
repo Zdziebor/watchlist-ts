@@ -1,8 +1,20 @@
-import { movie4, movies } from "./data.js";
 import { printAll, printStats } from "./display.js";
-import { addMovie } from "./movies.js";
+import { Watchlist } from "./Watchlist.js";
 
+const watchlist = new Watchlist();
+watchlist.add("Spider-Man", 2020, "Action");
+watchlist.add("X-Men", 2023, "Action");
 
-addMovie(movies, movie4);
-printAll(movies);
-printStats(movies);
+console.log(watchlist.rate(1, 15));
+console.log(watchlist.rate(999, 8));
+console.log(watchlist.rate(1, 8));
+
+printAll(watchlist.getAll());
+printStats(watchlist.getAll());
+
+const copyCheck = watchlist.getAll();
+copyCheck.splice(0, 1)
+
+console.log(copyCheck.length);
+
+console.log(watchlist.getAll().length)
