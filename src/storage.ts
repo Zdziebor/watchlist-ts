@@ -17,10 +17,15 @@ export async function save(movies: Movie[]): Promise<void> {
 
 }
 
-export async function load(): Promise<void> {
+export async function load(): Promise<Movie[]> {
 
-    const fileContent = await readFile(`watchlist.json`, "utf8");
-
-    console.log(fileContent);
+    try {
+        const fileContent = await readFile(`watchlist.json`, "utf8");
+        const jsonToArray = JSON.parse(fileContent);
+        return jsonToArray;
+    } catch (error) {
+        console.log("Failed to read a file");
+        return [];
+    }
 
 }
