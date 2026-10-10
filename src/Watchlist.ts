@@ -6,6 +6,21 @@ export class Watchlist {
     private movies: Movie[] = [];
     private nextId: number = 1;
 
+    constructor(initialMovies: Movie[] = []) {
+        this.movies = initialMovies;
+        this.nextId = 0;
+        for (const element of this.movies) {
+
+            if (element.id >= this.nextId) {
+                this.nextId = element.id;
+            }
+        }
+
+        this.nextId += 1;
+
+
+    }
+
 
 
     getAll(): Movie[] {
