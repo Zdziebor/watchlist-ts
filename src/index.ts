@@ -1,5 +1,7 @@
 import { printAll, printStats } from "./display.js";
 import { Watchlist } from "./Watchlist.js";
+import { save } from "./storage.js";
+import { movies } from "./data.js";
 
 const watchlist = new Watchlist();
 watchlist.add("Spider-Man", 2020, "Action");
@@ -18,3 +20,7 @@ copyCheck.splice(0, 1)
 console.log(copyCheck.length);
 
 console.log(watchlist.getAll().length)
+
+const jsonText = JSON.stringify(watchlist.getAll(), null, 2);
+
+await save(watchlist.getAll());
