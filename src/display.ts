@@ -30,8 +30,6 @@ export const printMovie = (movie: Movie) => {
 
 export function printAll(movieArray: Movie[]): void {
 
-    // console.log(`WATCHLIST - ${movieArray.length}`)
-
     for (const movie of movieArray) {
         printMovie(movie);
     }

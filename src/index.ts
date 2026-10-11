@@ -1,7 +1,6 @@
 import { printAll, printStats } from "./display.js";
 import { Watchlist } from "./Watchlist.js";
 import { save, load } from "./storage.js";
-console.log(process.argv)
 
 
 const loadedArray = await load();
